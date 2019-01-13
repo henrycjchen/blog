@@ -1,5 +1,5 @@
 - 编程知识
-  - [OOP/AOP](programming/oop-aop.md)
+  - [OOP/AOP](promming/oop-aop.md)
 
 - 编程语言
   - javascript
