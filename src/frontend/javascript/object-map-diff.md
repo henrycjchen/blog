@@ -45,7 +45,7 @@ map.forEach((val,kay)=>console.log(val, key)) // 1 a, 2 b
 
 weakMap 与 map 又稍有不同：
 
-- 只能用 Object 为 key
+- 只用函数、对象为 key
 - 不能遍历
 - 当 key 的引用丢失时，weakMap 对应的 key 为被回收，不会造成内存泄露
 
