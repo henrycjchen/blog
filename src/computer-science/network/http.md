@@ -29,7 +29,9 @@ HTTP over QUIC
 
 QUIC 是 google 公司创建的基于 **UDP** 的网络协议
 
-QUIC = UDP + TLS + HTTP/2
+QUIC = UDP + TLS1.3 + HTTP/2
+
+
 
 
 
@@ -58,8 +60,37 @@ TLS 大致过程：
 
 
 
+## TLS1.2 vs TLS 1.3
+
+TLS 1.2 采用 RSA 公私钥加密形式，首次建立连接需要 2RTT
+
+```
+C -- 发起请求      -> S
+C <- 证书/公钥     -- S
+C -- 公钥加密随机数 -> S
+```
+
+TLS 1.3 采用 ECDH 椭圆函数算法(A = 随机数 a * 大数 G，由 a G 可得 A，但由 A G 得不到 a)，首次建立连接需要 1RTT
+
+```
+C -- A/G -> S
+C <- B/G -- S
+```
+
+连接复用情况下
+
+TLS1.2 客户端用 session-id 到服务端换通信秘钥，需要 1RTT
+
+TLS1.3 客户端直接自行加密，实现 0RTT 通信
+
+
+
 ## 参考资料
 
 1. [《从HTTP/0.9到HTTP/2：一文读懂HTTP协议的历史演变和设计思路》](http://www.52im.net/thread-1709-1-1.html) ，2019 年，JackJiang
 
 2. [《SSL/TLS协议运行机制的概述》](http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
+
+3. [《详解TLS1.3的握手过程》](https://blog.csdn.net/zk3326312/article/details/80245756)
+
+4. [《TLS1.3/QUIC 是怎样做到 0-RTT 的》]([https://liudanking.com/network/tls1-3-quic-%E6%98%AF%E6%80%8E%E6%A0%B7%E5%81%9A%E5%88%B0-0-rtt-%E7%9A%84/](https://liudanking.com/network/tls1-3-quic-是怎样做到-0-rtt-的/))
