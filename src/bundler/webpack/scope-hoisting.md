@@ -53,17 +53,11 @@ import str from "./main.js";
 
 ## 原理
 
-通过分析各模块间的依赖关系，尽可能地将打散的模块合并到一个函数中。为保证不造成代码的冗余，只有被引用一次的模块才能被合并。
+通过分析各模块间的依赖关系，尽可能地将打散的模块合并到一个函数中。为保证不造成代码的冗余，只有被**引用一次**的模块才能被合并。
 
-为分析出各模块的依赖关系，源码必需采用 ES6 模块化语句。（tree-shaking 同理）
+由于 scope hoisting 是 ES 模块化的特性，因此源码必需采用 ES6 模块化语句。
 
-
-
-### 题外话：为什么分析依赖关系要求源码采用 ES6 模块化语句
-
-模块化主要有 ES6 和 commonjs 两类，前者为静态分析，根据文件头的依赖声明和导出的内容，就可以得到整个项目的依赖关系
-
-而 commonjs 需要代码运行起来才能知道模块的依赖关系
+（ES 模块化声明会提升，而 commonjs 模块化需要声明后才能使用）
 
 
 
@@ -126,3 +120,5 @@ module.exports = {
 **参考资料**
 
 1. <了不起的 Webpack Scope Hoisting 学习指南>, 2020-07-12, https://xie.infoq.cn/article/1a7193732649808678048b982
+2. Are ES6 module imports hoisted, https://stackoverflow.com/questions/29329662/are-es6-module-imports-hoisted
+3. ModuleConcatenationPlugin, https://webpack.js.org/plugins/module-concatenation-plugin/
