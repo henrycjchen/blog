@@ -12,7 +12,7 @@ let b = new Base();
 new 一个函数时发生了什么，这里模拟一个构造函数：
 
 ```js
-function create(baseFn, ...args) {
+function create(Base, ...args) {
     let obj = {};
     obj.__proto__ = Base.prototype;
     let result = Base.apply(obj, args);

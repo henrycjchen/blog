@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="grow">grow</button>
+</body>
+<script>
+    var x = [];
+
+    function grow() {
+        for (var i = 0; i < 10000; i++) {
+        	let el = document.createElement('div')
+        	// el.innerHTML = '123'
+            document.body.appendChild(el);
+        }
+        x.push(new Array(1000000).join('x'));
+    }
+
+    document.getElementById('grow').addEventListener('click', grow);
+</script>
+</html>
